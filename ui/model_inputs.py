@@ -22,9 +22,9 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
         T = st.number_input("Time horizon (T, periods)", min_value=1, max_value=60,
                             value=int(st.session_state["T"]), step=1, key="T")
 
-        beta = st.number_input("Responsiveness to Communication (0.0001 to 1)", min_value=0.0001, max_value=1.0,
+        beta = st.number_input("Responsiveness to communication (0.0001 to 1)", min_value=0.0001, max_value=1.0,
                                value=float(st.session_state["beta"]), step=0.0001, format="%.4f", key="beta")
-        B = st.number_input("Budget per capita (£)", min_value=0.0, max_value=100.0,
+        B = st.number_input("Communication budget per capita (£)", min_value=0.0, max_value=100.0,
                             value=float(st.session_state["B"]), step=0.1, format="%.2f", key="B")
         vaccinated_pop_start = st.number_input("Initial # of people vaccinated (0 to N)",
                                                min_value=0.0, max_value=float(N),
