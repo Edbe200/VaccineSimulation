@@ -6,7 +6,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
     Renders the input UI.
     Returns: (params, shock, run_button_clicked)
     """
-    st.subheader("Inputs (manual)")
+    st.subheader("Inputs")
 
     shock_enabled = st.checkbox(
         "Enable disinformation shock",
@@ -22,17 +22,17 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
         T = st.number_input("Time horizon (T, periods)", min_value=1, max_value=60,
                             value=int(st.session_state["T"]), step=1, key="T")
 
-        beta = st.number_input("Beta (responsiveness)", min_value=0.0001, max_value=1.0,
+        beta = st.number_input("Responsiveness to Communication (beta)", min_value=0.0001, max_value=1.0,
                                value=float(st.session_state["beta"]), step=0.0001, format="%.4f", key="beta")
         B = st.number_input("Budget per capita (B, £)", min_value=0.0, max_value=100.0,
                             value=float(st.session_state["B"]), step=0.1, format="%.2f", key="B")
-        vaccinated_pop_start = st.number_input("Initial vaccinated (ω_start)",
+        vaccinated_pop_start = st.number_input("Initial # of people vaccinated (ω_start)",
                                                min_value=0.0, max_value=float(N),
                                                value=float(st.session_state["vaccinated_pop_start"]),
                                                step=1.0, format="%.0f", key="vaccinated_pop_start")
         x = st.number_input("QALY multiplier per period (x)", min_value=0.0, max_value=0.01,
                             value=float(st.session_state["x"]), step=0.00001, format="%.5f", key="x")
-        rho = st.number_input("Rho (returns exponent)", min_value=0.01, max_value=1.0,
+        rho = st.number_input("Returns to scale of communication (rho)", min_value=0.01, max_value=1.0,
                               value=float(st.session_state["rho"]), step=0.01, format="%.2f", key="rho")
 
         st.markdown("## Shock parameters")
@@ -42,7 +42,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
                                             min_value=1, max_value=int(T),
                                             value=min(int(st.session_state["shock_start_t"]), int(T)),
                                             step=1, key="shock_start_t")
-            shock_beta_reduction_pct = st.number_input("Beta reduction (δ)",
+            shock_beta_reduction_pct = st.number_input("Shock Strength (δ)",
                                                        min_value=0.0, max_value=1.0,
                                                        value=float(st.session_state["shock_beta_reduction_pct"]),
                                                        step=0.01, format="%.2f", key="shock_beta_reduction_pct")
