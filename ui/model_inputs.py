@@ -22,9 +22,9 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
         T = st.number_input("Time horizon (T, periods)", min_value=1, max_value=60,
                             value=int(st.session_state["T"]), step=1, key="T")
 
-        beta = st.number_input("Responsiveness to Communication", min_value=0.0001, max_value=1.0,
+        beta = st.number_input("Responsiveness to Communication (0.0001 to 1)", min_value=0.0001, max_value=1.0,
                                value=float(st.session_state["beta"]), step=0.0001, format="%.4f", key="beta")
-        B = st.number_input("Budget per capita (B, £)", min_value=0.0, max_value=100.0,
+        B = st.number_input("Budget per capita (£)", min_value=0.0, max_value=100.0,
                             value=float(st.session_state["B"]), step=0.1, format="%.2f", key="B")
         vaccinated_pop_start = st.number_input("Initial # of people vaccinated",
                                                min_value=0.0, max_value=float(N),
@@ -32,7 +32,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
                                                step=1.0, format="%.0f", key="vaccinated_pop_start")
         x = st.number_input("QALY multiplier per period (0 to 0.01)", min_value=0.0, max_value=0.01,
                             value=float(st.session_state["x"]), step=0.00001, format="%.5f", key="x")
-        rho = st.number_input("Returns to scale of communication (rho)", min_value=0.01, max_value=1.0,
+        rho = st.number_input("Returns to scale of communication (0 to 1)", min_value=0.01, max_value=1.0,
                               value=float(st.session_state["rho"]), step=0.01, format="%.2f", key="rho")
 
         st.markdown("## Shock parameters")
