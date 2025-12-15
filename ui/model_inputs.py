@@ -46,7 +46,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
                                                        min_value=0.0, max_value=1.0,
                                                        value=float(st.session_state["shock_beta_reduction_pct"]),
                                                        step=0.01, format="%.2f", key="shock_beta_reduction_pct")
-            shock_duration = st.number_input("Shock duration (L)",
+            shock_duration = st.number_input("Shock duration (# of periods)",
                                              min_value=1, max_value=int(T),
                                              value=min(int(st.session_state["shock_duration"]), int(T)),
                                              step=1, key="shock_duration")
