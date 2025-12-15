@@ -6,7 +6,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
     Renders the input UI.
     Returns: (params, shock, run_button_clicked)
     """
-    st.subheader("Inputs")
+    st.subheader("Model inputs")
 
     shock_enabled = st.checkbox(
         "Enable disinformation shock",
@@ -15,7 +15,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
     )
 
     with st.form("inputs_form"):
-        st.markdown("## Core parameters")
+        st.markdown("## Core model parameters")
 
         N = st.number_input("Population (N)", min_value=1, max_value=5_000_000,
                             value=int(st.session_state["N"]), step=1, key="N")
@@ -35,7 +35,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
         rho = st.number_input("Returns to scale of communication (0 to 1)", min_value=0.01, max_value=1.0,
                               value=float(st.session_state["rho"]), step=0.01, format="%.2f", key="rho")
 
-        st.markdown("## Shock parameters")
+        st.markdown("## Disinformation shock parameters")
 
         if shock_enabled:
             shock_start_t = st.number_input("Shock start period (period t)",
