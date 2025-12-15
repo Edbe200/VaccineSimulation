@@ -26,7 +26,7 @@ def render_inputs() -> tuple[ModelParams, ShockParams, bool]:
                                value=float(st.session_state["beta"]), step=0.0001, format="%.4f", key="beta")
         B = st.number_input("Budget per capita (£)", min_value=0.0, max_value=100.0,
                             value=float(st.session_state["B"]), step=0.1, format="%.2f", key="B")
-        vaccinated_pop_start = st.number_input("Initial # of people vaccinated",
+        vaccinated_pop_start = st.number_input("Initial # of people vaccinated (0 to N)",
                                                min_value=0.0, max_value=float(N),
                                                value=float(st.session_state["vaccinated_pop_start"]),
                                                step=1.0, format="%.0f", key="vaccinated_pop_start")
