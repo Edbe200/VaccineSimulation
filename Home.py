@@ -19,8 +19,6 @@ st.header("About me")
 
 st.markdown("""
 I'm **Edward de Vries**, a **BA Economics with French** student at **Durham University**, currently on exchange at **Aix-Marseille University**.
-
-I'm interested in a career in health economics, with a focus on applied modelling and cost-effectiveness analysis.
 """)
 
 st.subheader("Contact")
